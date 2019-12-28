@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.dao.userMapper">
+	<select id="selectAll" resultType="com.app.pojo.dev_user">
+		select * from dev_user
+	</select>
+
+	<select id="selectByPage" resultType="com.app.pojo.dev_user">
+		SELECT * FROM dev_user
+			<if test="params.size != 0 and params.start!=null">
+				limit #{params.start},#{params.size}
+			</if>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(1) from dev_user
+			<if test="params."
+	</select>
+</mapper>

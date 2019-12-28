@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.app.pojo.dev_user" alias="user"/>
+        <!--<typeAlias type="com.hj.domain.JobInfo" alias="JobInfo"/>-->
+        <!--<typeAlias type="com.hj.domain.User" alias="User"/>-->
+        <!--<typeAlias type="com.hj.domain.FileUpload" alias="FileUpload"/>-->
+    </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+    <mappers>
+        <mapper resource="com/app/dao/userMapper.xml"/>
+        <!--<mapper resource="com/hj/dao/JobInfoMapper.xml"/>-->
+        <!--<mapper resource="com/hj/dao/UserMapper.xml"/>-->
+        <!--<mapper resource="com/hj/dao/FileUploadMapper.xml"/>-->
+    </mappers>
+</configuration>
