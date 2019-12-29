@@ -14,9 +14,4 @@
 				limit #{params.start},#{params.size}
 			</if>
 	</select>
-
-	<select id="count" resultType="int">
-		select count(1) from dev_user
-			<if test="params."
-	</select>
 </mapper>

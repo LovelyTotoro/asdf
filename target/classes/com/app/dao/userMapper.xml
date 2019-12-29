@@ -7,4 +7,11 @@
 	<select id="selectAll" resultType="com.app.pojo.dev_user">
 		select * from dev_user
 	</select>
+
+	<select id="selectByPage" resultType="com.app.pojo.dev_user">
+		SELECT * FROM dev_user
+			<if test="params.size != 0 and params.start!=null">
+				limit #{params.start},#{params.size}
+			</if>
+	</select>
 </mapper>
