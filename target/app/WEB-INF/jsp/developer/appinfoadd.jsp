@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="common/header.jsp"%>
+<%@include file="common/js.jsp"%>
 <div class="clearfix"></div>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -43,7 +44,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">支持ROM <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="supportROM" class="form-control col-md-7 col-xs-12" name="supportROM" 
+              <input id="supportROM" class="form-control col-md-7 col-xs-12" name="supportROM"
               	data-validate-length-range="20" data-validate-words="1"   required="required"
               	placeholder="请输入支持的ROM" type="text">
             </div>
@@ -122,7 +123,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
             <input type="file" class="form-control col-md-7 col-xs-12" name="a_logoPicPath"  required="required" id="a_logoPicPath"/>
-            ${fileUploadError }
+            ${fileUploadError}
             </div>
           </div>
           <div class="ln_solid"></div>

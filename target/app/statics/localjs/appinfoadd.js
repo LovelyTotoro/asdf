@@ -26,6 +26,7 @@ $(function(){
 		success:function(data){//data：返回数据（json对象）
 			$("#categoryLevel1").html("");
 			var options = "<option value=\"\">--请选择--</option>";
+			alert(data.length);
 			for(var i = 0; i < data.length; i++){
 				options += "<option value=\""+data[i].id+"\">"+data[i].categoryName+"</option>";
 			}

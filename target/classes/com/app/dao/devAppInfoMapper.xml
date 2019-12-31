@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.devAppInfoMapper">
+    <select id="getFlatList" resultType="com.app.pojo.data_dictionary">
+        SELECT * FROM data_dictionary WHERE typeCode = #{tcode}
+    </select>
+    <select id="getCategoryLevelList" resultType="com.app.pojo.app_category">
+        SELECT * FROM app_category WHERE parentId = #{pid}
+    </select>
+    <select id="searchAPKByName" resultType="com.app.pojo.app_info">
+        SELECT * FROM app_info WHERE APKName=#{APKName}
+    </select>
+</mapper>

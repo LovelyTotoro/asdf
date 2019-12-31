@@ -1,7 +1,6 @@
 package com.app.pojo;
 
 import java.util.Date;
-
 public class app_category {
 	private int id;
 	private String categoryCode;
@@ -59,5 +58,4 @@ public class app_category {
 	public void setCategoryCode(String categoryCode) {
 		this.categoryCode = categoryCode;
 	}
-
 }
