@@ -3,13 +3,104 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.dao.devAppInfoMapper">
-    <select id="getFlatList" resultType="com.app.pojo.data_dictionary">
+    <select id="selectDataInfo" resultType="com.app.pojo.data_dictionary">
         SELECT * FROM data_dictionary WHERE typeCode = #{tcode}
     </select>
-    <select id="getCategoryLevelList" resultType="com.app.pojo.app_category">
+    <select id="selectCategoryLevelList" resultType="com.app.pojo.app_category">
         SELECT * FROM app_category WHERE parentId = #{pid}
     </select>
-    <select id="searchAPKByName" resultType="com.app.pojo.app_info">
+    <select id="selectAPKByName" resultType="com.app.pojo.app_info">
         SELECT * FROM app_info WHERE APKName=#{APKName}
+    </select>
+    <insert id="saveAppInfo">
+        INSERT into app_info (softwareName,APKName,supportROM,interfaceLanguage,softwareSize,devId,appInfo,status,flatformId,
+        categoryLevel1,categoryLevel2,categoryLevel3,downloads,createBy,creationDate,logoPicPath)
+        VALUE
+        (#{params.softwareName},#{params.APKName},#{params.supportROM},#{params.interfaceLanguage},#{params.softwareSize},
+        #{params.devId},#{params.appInfo},#{params.status},#{params.flatformId},#{params.categoryLevel1},#{params.categoryLevel2},
+        #{params.categoryLevel3},#{params.downloads},#{params.createBy},#{params.creationDate},#{params.logoPicPath})
+    </insert>
+
+    <insert id="saveAppVersion">
+        INSERT INTO app_version (appId,versionNo,versionSize,publishStatus,versionInfo,createBy,creationDate,modifyBy,modifyDate,apkFileName,downloadLink,apkLocPath)
+        VALUE (#{params.appId},#{params.versionNo},#{params.versionSize},#{params.publishStatus},#{params.versionInfo},#{params.createdBy},
+        #{params.creationDate},#{params.modifyBy},#{params.modifyDate},#{params.apkFileName},#{params.a_downloadLink},#{params.apkLocPath})
+    </insert>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(1) from app_info
+        <where>
+            and devId = #{params.devId}
+            <if test="params.softWareName != null">
+                and softwareName LIKE #{params.softWareName}
+            </if>
+            <if test="params.status != -1">
+                and status = #{params.status}
+            </if>
+            <if test="params.flatformId != -1">
+                and flatformId = #{params.flatformId}
+            </if>
+            <if test="params.categoryLevel1 != -1">
+                and categoryLevel1 = #{params.categoryLevel1}
+            </if>
+            <if test="params.categoryLevel2 != -1">
+                and categoryLevel2 = #{params.categoryLevel2}
+            </if>
+            <if test="params.categoryLevel3 != -1">
+                AND categoryLevel3 = #{params.categoryLevel3}
+            </if>
+        </where>
+    </select>
+    <select id="selectAppInfoByPage" resultType="com.app.pojo.app_info">
+        SELECT * from app_info
+        <where>
+            and devId = #{params.devId}
+            <if test="params.softWareName != null">
+                and softwareName LIKE '%${params.softWareName}%'
+            </if>
+            <if test="params.status != -1">
+                and status = #{params.status}
+            </if>
+            <if test="params.flatformId != -1">
+                and flatformId = #{params.flatformId}
+            </if>
+            <if test="params.categoryLevel1 != -1">
+                and categoryLevel1 = #{params.categoryLevel1}
+            </if>
+            <if test="params.categoryLevel2 != -1">
+                and categoryLevel2 = #{params.categoryLevel2}
+            </if>
+            <if test="params.categoryLevel3 != -1">
+                AND categoryLevel3 = #{params.categoryLevel3}
+            </if>
+        </where>
+        <if test="params.start != null and params.si != null">
+            limit #{params.start},#{params.si}
+        </if>
+    </select>
+
+    <select id="selectCategoryById" resultType="com.app.pojo.app_category">
+        SELECT * from app_category WHERE #{id} = id
+    </select>
+
+    <select id="selectVersionById" resultType="com.app.pojo.app_version">
+        SELECT * FROM app_version WHERE #{id} = Id
+    </select>
+
+    <select id="selectDictionaryByValueId" resultType="com.app.pojo.data_dictionary">
+        SELECT * from data_dictionary where #{id} = valueId
+    </select>
+
+    <select id="selectVersionByAppId" resultType="com.app.pojo.app_version">
+        SELECT * from app_version where #{id} = appId
+    </select>
+    <select id="selectAppInfoById" resultType="com.app.pojo.app_info">
+        SELECT * from app_info WHERE  #{id} = id
+    </select>
+    <update id="updateAppInfo">
+        UPDATE app_info SET versionId=#{params.versionId},modifyDate=#{params.modifyDate},modifyBy=#{params.modifyBy} WHERE id=#{params.appId}
+    </update>
+    <select id="selectVersionByNo" resultType="com.app.pojo.app_version">
+        SELECT * FROM  app_version WHERE versionNo=#{no}
     </select>
 </mapper>

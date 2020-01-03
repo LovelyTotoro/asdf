@@ -18,7 +18,7 @@ public class app_info {
 	private int flatformId;
 	private int categoryLevel3;
 	private int downloads;
-	private int createdBy;
+	private int createBy;
 	private Date creationDate;
 	private int modifyBy;
 	private Date modifyDate;
@@ -117,11 +117,11 @@ public class app_info {
 	public void setDownloads(int downloads) {
 		this.downloads = downloads;
 	}
-	public int getCreatedBy() {
-		return createdBy;
+	public int getCreateBy() {
+		return createBy;
 	}
-	public void setCreatedBy(int createdBy) {
-		this.createdBy = createdBy;
+	public void setCreateBy(int createdBy) {
+		this.createBy = createdBy;
 	}
 	public Date getCreationDate() {
 		return creationDate;

@@ -65,7 +65,5 @@ public class data_dictionary {
 	}
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
-	} 
-    
-
+	}
 }
